@@ -122,8 +122,8 @@ parts:
 
   pebble:
     plugin: go
-    build-packages:
-      - golang-go
+    build-snaps:
+      - go/1.26/stable
     source-type: git
     source: https://github.com/canonical/pebble
     source-tag: v1.10.2
@@ -352,16 +352,16 @@ parts:
     plugin: make
     source: src/host-info
     build-packages:
-      - golang-go
-    prime:
+      - gosnaps:
+      - go/1.26/stable
       - usr/share/maas/machine-resources
 
   maas-agent:
     plugin: make
     source: src/maasagent
     build-packages:
-      - golang-go
-    build-environment:
+      - gosnaps:
+      - go/1.26/stablement:
       - GOFLAGS: "${GOFLAGS:-} -mod=readonly"
     prime:
       - usr/sbin/
@@ -370,8 +370,8 @@ parts:
     plugin: make
     source: src/maasopenfga
     build-packages:
-      - golang-go
-    build-environment:
+      - gosnaps:
+      - go/1.26/stablement:
       - GOFLAGS: "${GOFLAGS:-} -mod=readonly"
     prime:
       - usr/sbin/
